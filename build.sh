@@ -5,8 +5,9 @@ export LANG=C
 export LC_ALL=C.UTF-8
 export ALLOW_MISSING_DEPENDENCIES=true
 export SOONG_ALLOW_MISSING_DEPENDENCIES=true
-export CCACHE_DIR=~/ccache
+export CCACHE_DIR=~/.ccache
 export USE_CCACHE=1
+export FLOKO_BUILD_TYPE=EXPERIMENTAL
 
 # 作っとく
 mkdir -p ../log/success ../log/fail ~/rom
@@ -45,7 +46,7 @@ esac
 done
 
 cd ../$builddir
-prebuilts/misc/linux-x86/ccache/ccache -M 30G
+ccache -M 45G
 
 # repo sync
 if [ "$sync" = "true" ]; then
@@ -114,7 +115,7 @@ else
 fi
 
 # jack-server絶対殺すマン
-prebuilts/sdk/tools/jack-admin kill-server
+#prebuilts/sdk/tools/jack-admin kill-server
 
 cd ..
 
